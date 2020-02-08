@@ -1,0 +1,6 @@
+{
+    "beerInGlasWeight": 300,
+    "weightKeg": 1500,
+    "calibration_factor": -21300,
+    "zero_factor": -33872 
+}
