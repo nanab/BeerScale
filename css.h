@@ -2,7 +2,7 @@ const char CSS_page[] PROGMEM = R"=====(
 
   <meta charset="utf-8">
   
-  <title>Beercooler</title>
+  <title>BeerScale</title>
   <meta name="description" content="Beercooler">
   <meta name="author" content="Ola Wallin/Filip Roos Eriksson">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

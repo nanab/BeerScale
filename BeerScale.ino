@@ -27,9 +27,10 @@ String pageTextNewZeroValue = "Nytt nollvärde"; //New zero value
 String pageTextActualWeight = "Aktuell vikt i gram"; //Actual weight in grams
 String pageTextCalibrateFactor = "Kalibreringsfaktor"; //Calibration factor
 String pageTextAmountWeightBeerGlass = "Antal gram öl per glas"; //Amount in grams of beer in a glas
-String pageTextAmountWeightEmptyKeg = "Antal gram för tomt fat"; //Amount i grams of empty keg
+String pageTextAmountWeightEmptyKeg = "Antal gram for tomt fat"; //Amount i grams of empty keg
 String pageTextLabel = "Label"; //Beerlabel displayed on screen
 String pageTextSaved = "Sparat!"; //Saved
+ 
  
 //define settings file stored in flash
 #define SCALE_CONFIG  "/scaleConfig.json"
@@ -39,11 +40,11 @@ float calibration_factor = -21300;
 float zero_factor = -33872;
 
 // Define our data and clock pins for scale
-#define DOUT 14 // D2 maps to GPIO4
-#define CLK 12  // D1 maps to GPIO5
+#define DOUT 14 // D5 maps to GPIO14
+#define CLK 12  // D6 maps to GPIO12
 
 //definde oled
-#define OLED_RESET -1  // GPIO0
+#define OLED_RESET 1  // GPIO0
 Adafruit_SSD1306 OLED(OLED_RESET);
 
 // Initialize HX711 interface
@@ -80,6 +81,7 @@ ESP8266HTTPUpdateServer httpUpdater;
 
 // This is called if the WifiManager is in config mode (AP open)
 void configModeCallback (WiFiManager *myWiFiManager) {
+  
   OLED.clearDisplay();
   OLED.setTextSize(1);
   OLED.setTextColor(WHITE);
@@ -90,15 +92,17 @@ void configModeCallback (WiFiManager *myWiFiManager) {
   OLED.setCursor(35,20);
   OLED.println("192.168.4.1");
   OLED.display();
+  
 }
 
 void setup() {
        
-    WiFi.hostname(host);
+    //WiFi.hostname(host);
     Serial.begin(115200);
     Serial.println("Connecting");
     
     //oled boot text
+    
     OLED.begin();
     delay(1000);
     OLED.clearDisplay();
@@ -113,6 +117,7 @@ void setup() {
     
     //WifiManager
     WiFiManager wifiManager;
+    //
     //wifiManager.resetSettings();
     wifiManager.setAPCallback(configModeCallback);
     wifiManager.autoConnect("BeerScaleAP");
@@ -178,9 +183,11 @@ void setup() {
     server.on("/savecalibrate", HTTP_GET, handleSaveCalibrate);
     server.begin();
     MDNS.addService("http", "tcp", 80);
+    
 }
 
-int updateOled(){  
+int updateOled(){
+   
     weightGrams = scale.get_units() * 1000;
     float weightWhitoutKeg = weightGrams - weightKeg;
     glasesLeft = weightWhitoutKeg/beerInGlasWeight;
@@ -214,7 +221,8 @@ int updateOled(){
     OLED.setCursor(60,19);
     OLED.print(beerLitersLeft, 1);
     OLED.println("L");
-    OLED.display(); //output 'display buffer' to screen      
+    OLED.display(); //output 'display buffer' to screen   
+      
 }
 
 void loop() {
@@ -222,6 +230,7 @@ void loop() {
     server.handleClient();
     updateOled();
 }
+
 void handleRoot() {
   String cssSite = CSS_page;
   String mainHead = "";
