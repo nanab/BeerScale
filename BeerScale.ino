@@ -9,6 +9,7 @@
 #include "ESP8266HTTPUpdateServer_edited.h"
 #include <ArduinoJson.h>
 #include <FS.h>
+#include "ESP8266FtpServer.h"
 
 //include webpages
 #include "css.h"
@@ -74,6 +75,9 @@ String beerLabel = "Beer Label";
 float glasesLeft;
 float beerLitersLeft;
 float weightGrams;
+
+//ftp server
+FtpServer ftpSrv;
 
 //Initilize webpage and updatepage
 ESP8266WebServer server(80);
@@ -183,7 +187,7 @@ void setup() {
     server.on("/savecalibrate", HTTP_GET, handleSaveCalibrate);
     server.begin();
     MDNS.addService("http", "tcp", 80);
-    
+    ftpSrv.begin("admin", "admin"); // username, password for ftp. Set ports in ESP8266FtpServer.h (default 21, 50009 for PASV)
 }
 
 int updateOled(){
@@ -228,6 +232,7 @@ int updateOled(){
 void loop() {
     MDNS.update();
     server.handleClient();
+    ftpSrv.handleFTP();
     updateOled();
 }
 
@@ -267,21 +272,25 @@ void handleSettings(){
 }
 void calibratePlus100() {
   calibration_factor += 100;
+  scale.set_scale(calibration_factor);
   server.sendHeader("Location","/calibrate");
   server.send(303);  
 }
 void calibratePlus1000() {
   calibration_factor += 1000;
+  scale.set_scale(calibration_factor);
   server.sendHeader("Location","/calibrate");
   server.send(303);  
 }
 void calibrateMinus100() {
   calibration_factor -= 100;
+  scale.set_scale(calibration_factor);
   server.sendHeader("Location","/calibrate");
   server.send(303);  
 }
 void calibrateMinus1000() {
   calibration_factor -= 1000;
+  scale.set_scale(calibration_factor);
   server.sendHeader("Location","/calibrate");
   server.send(303);  
 }
