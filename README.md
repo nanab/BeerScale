@@ -7,5 +7,7 @@
     OLED skärm: https://pchbutik.se/kretskort/830-oled-display-096-tummed-128x64-vita-pixlar-i2c-ssd1306.html?search_query=1316&results=1 <br>
     HX711 ADC viktmodul: https://pchbutik.se/nytt-pa-lager/967-modul-till-vikt-sensor-hx711-adc.html?search_query=0391&results=1 <br>
     Wemos D1 mini: https://pchbutik.se/nytt-pa-lager/1179-esp8266-esp-12-usb-wemos-d1-mini-wifi-development-board-d1-mini-nodemc.html?search_query=wemos+d1&results=44 <br>
- 
+ <br>
+
+ ![Schematic](schematic.PNG)
  
