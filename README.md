@@ -9,5 +9,5 @@
     Wemos D1 mini: https://pchbutik.se/nytt-pa-lager/1179-esp8266-esp-12-usb-wemos-d1-mini-wifi-development-board-d1-mini-nodemc.html?search_query=wemos+d1&results=44 <br>
  <br>
 <b>Kopplingschema:</b>
-    ![Schematic](schematic.PNG)
+![Schematic](schematic.PNG)
  
