@@ -1,3 +1,7 @@
+/*BeerScale Made by Ola Wallin https://github.com/nanab/BeerScale/
+  V1.0
+*/
+
 #include "HX711.h"
 #include <ESP8266WiFi.h>
 #include <Adafruit_GFX.h>
@@ -76,6 +80,9 @@ float glasesLeft;
 float beerLitersLeft;
 float weightGrams;
 
+int ftpEnable = 0;
+String ftpUser = "admin";
+String ftpPassword = "pass";
 //ftp server
 FtpServer ftpSrv;
 
@@ -187,7 +194,9 @@ void setup() {
     server.on("/savecalibrate", HTTP_GET, handleSaveCalibrate);
     server.begin();
     MDNS.addService("http", "tcp", 80);
-    ftpSrv.begin("admin", "admin"); // username, password for ftp. Set ports in ESP8266FtpServer.h (default 21, 50009 for PASV)
+    if (ftpEnable == 1) {
+      ftpSrv.begin(ftpUser, ftpPassword); // username, password for ftp. Set ports in ESP8266FtpServer.h (default 21, 50009 for PASV)
+    }
 }
 
 int updateOled(){
@@ -232,7 +241,9 @@ int updateOled(){
 void loop() {
     MDNS.update();
     server.handleClient();
-    ftpSrv.handleFTP();
+    if (ftpEnable == 1){
+      ftpSrv.handleFTP();
+    }
     updateOled();
 }
 
