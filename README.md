@@ -8,6 +8,15 @@
     HX711 ADC viktmodul: https://pchbutik.se/nytt-pa-lager/967-modul-till-vikt-sensor-hx711-adc.html?search_query=0391&results=1 <br>
     Wemos D1 mini: https://pchbutik.se/nytt-pa-lager/1179-esp8266-esp-12-usb-wemos-d1-mini-wifi-development-board-d1-mini-nodemc.html?search_query=wemos+d1&results=44 <br>
  <br>
-<b>Kopplingschema:</b>
-    ![Schematic](schematic.PNG)
+<b>Hårdvara:</b><br>
+    Hårdhårdhård
+<b>Installation av mjukvara:</b><br>
+    blablabla
+    
+<b> Första uppstart och kalibrering:</b><br>
+    blobloblo
+    
+<b>Kopplingsschema:</b>
+
+![Schematic](schematic.PNG)
  
