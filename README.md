@@ -10,13 +10,14 @@
  <br>
 <b>Hårdvara:</b><br>
     Hårdhårdhård
+<br>
 <b>Installation av mjukvara:</b><br>
     blablabla
-    
+<br>    
 <b> Första uppstart och kalibrering:</b><br>
     blobloblo
-    
+<br>    
 <b>Kopplingsschema:</b>
 
-![Schematic](schematic.PNG)
+![Schematic](images/schematic.PNG)
  
