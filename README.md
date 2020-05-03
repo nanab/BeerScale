@@ -16,7 +16,7 @@
     [Todo] Bild på koppling i vågen... <br><br>
     Allt kopplas enligt schemat:<br>
     <img src="images/schematic.PNG" width="50%"><br><br>
-    Vill man ha en tunn smidig installation så kan man sätta portarna vdd och sck ifrån oled skärmen direkt på wemos d1<br>
+    Vill man ha en tunn smidig installation så kan man sätta portarna SCL och SCA ifrån oled skärmen direkt på wemos d1<br>
     <img src="images/connection_1.jpg" width="50%"><br>
     <img src="images/whitout_case.jpg" width="50%"><br>
 
